@@ -17,6 +17,11 @@ override func viewDidLoad()
 {
  super.viewDidLoad()
  SendLocalAlert.sendLocalAlert(delaySeconds: 10, title: "Test", subTitle: "Test", msg: "Test")
+ print(NumberToWords.convert(amount: "1234.56"))
+ Queues.delayThenRunMainQueue(delay: 3) 
+   {
+   print("delayed in queue") 
+   }
 }
 
 

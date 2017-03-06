@@ -23,6 +23,8 @@ NumbersToWords --> Converts a number String "$1,234.56" to "one thousand two hun
       
       amount can be 0.01 ... 999,999.99  nine hundred ninety nine thousand nine hundred ninety nine dollars and 99/100
 
+SendLocalAlert --> A simple way to send and stop local alerts              
+
 
 
 ## Requirements

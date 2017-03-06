@@ -5,7 +5,7 @@ import UserNotifications
 import UserNotificationsUI
 
 
-open class SendLocalAlert
+public class SendLocalAlert
 {
 
 @available(iOS 10.0, *)
@@ -37,7 +37,7 @@ open class func sendLocalAlert(delaySeconds: Int, title: String, subTitle: Strin
 
 
 @available(iOS 10.0, *)
-open func shutOffAllLocalNotifications()
+public func shutOffAllLocalNotifications()
 {
  UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
 }

@@ -1,6 +1,6 @@
 {
   "name": "UtilitiesInSwift",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "summary": "Utility functions for swift",
   "description": "Utility functions for swift that have been created through the years.  Some converted from other languages.  \nThe utilities are broken down by type categories (I did what I thought was ok).\n  \n  * Queues        --> I mainly created these so as Swift morphs, I can easily adjust the function bodies and not all over the code base, plus, I may want to add later functionality.\n  * NumberToWords --> Convert decimal values to words for use in writing a check.  Cause we all write checks these days....",
   "homepage": "http://www.axee.com",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/steveaxelrod007/UtilitiesInSwift.git",
-    "tag": "1.0.2"
+    "tag": "1.0.3"
   },
   "platforms": {
     "ios": "10.0"

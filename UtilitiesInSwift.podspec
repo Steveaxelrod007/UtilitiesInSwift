@@ -8,22 +8,17 @@
 
 Pod::Spec.new do |s|
   s.name             = 'UtilitiesInSwift'
-  s.version          = '1.0.2'
+  s.version          = '1.0.3'
   s.summary          = 'Utility functions for swift'
 
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
 Utility functions for swift that have been created through the years.  Some converted from other languages.  
 The utilities are broken down by type categories (I did what I thought was ok).
   
-  * Queues        --> I mainly created these so as Swift morphs, I can easily adjust the function bodies and not all over the code base, plus, I may want to add later functionality.
-  * NumberToWords --> Convert decimal values to words for use in writing a check.  Cause we all write checks these days....
-               
+  * Queues         --> I mainly created these so as Swift morphs, I can easily adjust the function bodies and not all over the code base, plus, I may want to add later functionality.
+  * NumberToWords  --> Convert decimal values to words for use in writing a check.  Cause we all write checks these days....
+  * SendLocalAlert --> A simple way to send and stop local alerts              
                      
 
                        DESC
