@@ -44,6 +44,13 @@ CancelableClosure --> I use it for waiting for 0.5 seconds to elapse on key stro
        cc = newCc                         // axe set to global var 
        cc.runAfterDelayOf(delayTime: 0.5) // axe if nothing happens (i.e. user stops typing) then closure is called
        
+ UIColor Extension --> great way to save a color value as an Int then pull from database and easily convert back to UIColor                   
+
+      let color = UIColor.init(red: 10, green: 20, blue: 30)   // axe easy way to create a color
+      let colorInt = UIColor.hexFromColor(color: color)        // axe converts to an Int value for easy saving
+      UIColor.colorWithHex(hex: colorInt)                      // axe convert saved Int back to a color
+      // axe it is called hex as lots of folks express colors as hex values 0xFF1020 as an example
+      // colorWithHex  takes an Int that can be a hex value as well, in the end it's all 0 and 1's
 
 
 ## Requirements

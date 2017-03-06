@@ -17,11 +17,14 @@ var cc = CancelableClosure()       // axe maintain the var
 override func viewDidLoad() 
 {
  super.viewDidLoad()
+
  
  SendLocalAlert.sendLocalAlert(delaySeconds: 10, title: "Test", subTitle: "Test", msg: "Test")
+
  
  let num = "123,456.78"
  print("Origial number --> \(num)   \(NumberToWords.convert(amount: num))")
+
  
  let start = Date().timeIntervalSince1970
  Queues.delayThenRunMainQueue(delay: 2) 
@@ -29,7 +32,9 @@ override func viewDidLoad()
    print("delayed in queue --> \(Date().timeIntervalSince1970 - start)") 
    }
  
+
  print("Available device space --> \(FileSystem.availableDeviceSpace())")
+
  
  print("Phone is in use --> \(Phone.onPhone())")        
 
@@ -45,6 +50,10 @@ override func viewDidLoad()
  cc = newCc
  cc.runAfterDelayOf(delayTime: 1.5)
 
+
+ let color = UIColor.init(red: 10, green: 20, blue: 30)
+ print("Int value of color --> \(UIColor.hexFromColor(color: color))")
+ print("UIColor from Int --> \(UIColor.colorWithHex(hex: UIColor.hexFromColor(color: color)))")
 }
 
 
