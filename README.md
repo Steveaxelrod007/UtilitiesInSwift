@@ -6,8 +6,24 @@
 [![Platform](https://img.shields.io/cocoapods/p/UtilitiesInSwift.svg?style=flat)](http://cocoapods.org/pods/UtilitiesInSwift)
 
 ## Example
+Utility functions for swift that have been created through the years.  Some converted from other languages.  
+The utilities are broken down by type categories (I did what I thought was ok).
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+Queues --> I mainly created these so as Swift morphs, I can easily adjust the function bodies and not all over the code base, plus, I may want to add later functionality.
+
+NumbersToWords --> Converts a number String "$1,234.56" to "one thousand two hundred thirty four dollars and 56/100"
+
+      let words = NumbersToWords.convert(amount: "1.31") 
+      print(words)
+      One Dollar and 31/100
+      
+      let words = NumbersToWords.convert(amount: "9,304.67") 
+      print(words)
+      nine thousand three hundred four dollars and 67/100
+      
+      amount can be 0.01 ... 999,999.99  nine hundred ninety nine thousand nine hundred ninety nine dollars and 99/100
+
+
 
 ## Requirements
 

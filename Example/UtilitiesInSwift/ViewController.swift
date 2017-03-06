@@ -7,18 +7,24 @@
 //
 
 import UIKit
+import UtilitiesInSwift
 
-class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
+class ViewController: UIViewController 
+{
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+override func viewDidLoad() 
+{
+ super.viewDidLoad()
+ SendLocalAlert.sendLocalAlert(delaySeconds: 10, title: "Test", subTitle: "Test", msg: "Test")
+}
+
+
+override func didReceiveMemoryWarning() 
+{
+ super.didReceiveMemoryWarning()
+}
+
 
 }
 
