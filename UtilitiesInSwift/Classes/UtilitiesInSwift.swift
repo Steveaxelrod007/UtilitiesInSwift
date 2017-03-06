@@ -8,6 +8,6 @@
 
 import Foundation
 
-open class UtilitiesInSwift
+public class UtilitiesInSwift
 {
 }

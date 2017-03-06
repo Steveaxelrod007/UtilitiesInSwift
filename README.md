@@ -25,6 +25,10 @@ NumbersToWords --> Converts a number String "$1,234.56" to "one thousand two hun
 
 SendLocalAlert --> A simple way to send and stop local alerts              
 
+Phone --> See if device is currently on a phone call
+
+FileSystem --> clear out temp files, determine available space on device             
+
 
 
 ## Requirements

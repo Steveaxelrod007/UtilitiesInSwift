@@ -17,11 +17,14 @@ override func viewDidLoad()
 {
  super.viewDidLoad()
  SendLocalAlert.sendLocalAlert(delaySeconds: 10, title: "Test", subTitle: "Test", msg: "Test")
- print(NumberToWords.convert(amount: "1234.56"))
+ let num = "123,456.78"
+ print("Origial number --> \(num)   \(NumberToWords.convert(amount: num))")
  Queues.delayThenRunMainQueue(delay: 3) 
    {
    print("delayed in queue") 
    }
+ 
+ print("Available device space --> \(FileSystem.availableDeviceSpace())")    
 }
 
 

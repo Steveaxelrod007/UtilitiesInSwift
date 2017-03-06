@@ -18,7 +18,9 @@ The utilities are broken down by type categories (I did what I thought was ok).
   
   * Queues         --> I mainly created these so as Swift morphs, I can easily adjust the function bodies and not all over the code base, plus, I may want to add later functionality.
   * NumberToWords  --> Convert decimal values to words for use in writing a check.  Cause we all write checks these days....
-  * SendLocalAlert --> A simple way to send and stop local alerts              
+  * SendLocalAlert --> A simple way to send and stop local alerts 
+  * Phone          --> See if device is currently on a phone call
+  * FileSystem     --> clear out temp files, determine available space on device             
                      
 
                        DESC
