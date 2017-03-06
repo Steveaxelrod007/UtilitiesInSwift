@@ -12,19 +12,39 @@ import UtilitiesInSwift
 
 class ViewController: UIViewController 
 {
+var cc = CancelableClosure()       // axe maintain the var
 
 override func viewDidLoad() 
 {
  super.viewDidLoad()
+ 
  SendLocalAlert.sendLocalAlert(delaySeconds: 10, title: "Test", subTitle: "Test", msg: "Test")
+ 
  let num = "123,456.78"
  print("Origial number --> \(num)   \(NumberToWords.convert(amount: num))")
- Queues.delayThenRunMainQueue(delay: 3) 
+ 
+ let start = Date().timeIntervalSince1970
+ Queues.delayThenRunMainQueue(delay: 2) 
    {
-   print("delayed in queue") 
+   print("delayed in queue --> \(Date().timeIntervalSince1970 - start)") 
    }
  
- print("Available device space --> \(FileSystem.availableDeviceSpace())")    
+ print("Available device space --> \(FileSystem.availableDeviceSpace())")
+ 
+ print("Phone is in use --> \(Phone.onPhone())")        
+
+       
+ cc.cancelled = true
+        
+ let newCc = CancelableClosure()  
+ newCc.closure =
+   { //[weak self] in
+   print("closure called")
+   }
+
+ cc = newCc
+ cc.runAfterDelayOf(delayTime: 1.5)
+
 }
 
 

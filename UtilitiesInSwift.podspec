@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'UtilitiesInSwift'
-  s.version          = '1.0.4'
+  s.version          = '1.0.5'
   s.summary          = 'Utility functions for swift'
 
 
@@ -16,11 +16,12 @@ Pod::Spec.new do |s|
 Utility functions for swift that have been created through the years.  Some converted from other languages.  
 The utilities are broken down by type categories (I did what I thought was ok).
   
-  * Queues         --> I mainly created these so as Swift morphs, I can easily adjust the function bodies and not all over the code base, plus, I may want to add later functionality.
-  * NumberToWords  --> Convert decimal values to words for use in writing a check.  Cause we all write checks these days....
-  * SendLocalAlert --> A simple way to send and stop local alerts 
-  * Phone          --> See if device is currently on a phone call
-  * FileSystem     --> clear out temp files, determine available space on device             
+  * Queues            --> I mainly created these so as Swift morphs, I can easily adjust the function bodies and not all over the code base, plus, I may want to add later functionality.
+  * NumberToWords     --> Convert decimal values to words for use in writing a check.  Cause we all write checks these days....
+  * SendLocalAlert    --> A simple way to send and stop local alerts 
+  * Phone             --> See if device is currently on a phone call
+  * FileSystem        --> clear out temp files, determine available space on device             
+  * CancelableClosure --> I use it for waiting for 0.5 seconds to elapse on key strokes, then call some lookup function 
                      
 
                        DESC

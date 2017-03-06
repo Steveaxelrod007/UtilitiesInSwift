@@ -29,6 +29,21 @@ Phone --> See if device is currently on a phone call
 
 FileSystem --> clear out temp files, determine available space on device             
 
+CancelableClosure --> I use it for waiting for 0.5 seconds to elapse on key strokes, then call some lookup function
+
+       var cc = CancelableClosure()       // axe maintain the var
+       
+       cc.cancelled = true                // axe stop current one from running
+        
+       let newCc = CancelableClosure()    // axe create new one inside your acceptance of keystrokes func 
+       newCc.closure =
+         {// [weak self] in
+          // axe this is where you would make a server call to fetch a new search lookup based on keystrokes or something
+         }
+
+       cc = newCc                         // axe set to global var 
+       cc.runAfterDelayOf(delayTime: 0.5) // axe if nothing happens (i.e. user stops typing) then closure is called
+       
 
 
 ## Requirements
