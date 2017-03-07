@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'UtilitiesInSwift'
-  s.version          = '1.0.6'
+  s.version          = '1.0.7'
   s.summary          = 'Utility functions for swift'
 
 
@@ -22,7 +22,9 @@ The utilities are broken down by type categories (I did what I thought was ok).
   * Phone             --> See if device is currently on a phone call
   * FileSystem        --> clear out temp files, determine available space on device             
   * CancelableClosure --> I use it for waiting for 0.5 seconds to elapse on key strokes, then call some lookup function 
-  * UIColor Extension --> great way to save a color value as an Int then pull from database and easily convert back to UIColor                   
+  * UIColor Extension --> great way to save a color value as an Int then pull from database and easily convert back to UIColor
+  * Int Extension     --> convert Int to String distance display in feet/miles, 123456 to 123,456,  123456 to 123.5k (thousands), 123456789 to 123.46m (million)
+                     
 
                        DESC
 

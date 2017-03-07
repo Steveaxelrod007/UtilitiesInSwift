@@ -14,11 +14,9 @@ class ViewController: UIViewController
 {
 var cc = CancelableClosure()       // axe maintain the var
 
-override func viewDidLoad() 
-{
- super.viewDidLoad()
 
- 
+func tests()
+{
  SendLocalAlert.sendLocalAlert(delaySeconds: 10, title: "Test", subTitle: "Test", msg: "Test")
 
  
@@ -54,6 +52,28 @@ override func viewDidLoad()
  let color = UIColor.init(red: 10, green: 20, blue: 30)
  print("Int value of color --> \(UIColor.hexFromColor(color: color))")
  print("UIColor from Int --> \(UIColor.colorWithHex(hex: UIColor.hexFromColor(color: color)))")
+
+ 
+ for intVal in [10000, 50000, 100000, 1000000, 10000000, (5280 * 1000) - 1, (5280 * 1000)]
+     {
+     print(intVal.distance())
+     print(intVal.fullNotation())
+     print(intVal.kmNotation())
+     print("------------")
+     }
+}
+
+
+override func viewDidLoad() 
+{
+ super.viewDidLoad()
+}
+
+
+override func viewDidAppear(_ animated: Bool)
+{
+ super.viewDidAppear(animated)
+ tests()
 }
 
 
