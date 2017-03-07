@@ -54,7 +54,7 @@ func tests()
  print("UIColor from Int --> \(UIColor.colorWithHex(hex: UIColor.hexFromColor(color: color)))")
 
  
- for intVal in [10000, 50000, 100000, 1000000, 10000000, (5280 * 1000) - 1, (5280 * 1000)]
+ for intVal in [10000, 50000, 100000, 1000000, 10000000, (5280 * 1000) - 1, (5280 * 1000), 999999,999990,999900]
      {
      print(intVal.distance())
      print(intVal.fullNotation())
