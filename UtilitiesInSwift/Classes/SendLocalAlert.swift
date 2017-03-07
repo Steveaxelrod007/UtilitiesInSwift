@@ -9,7 +9,7 @@ public class SendLocalAlert
 {
 
 @available(iOS 10.0, *)
-open class func sendLocalAlert(delaySeconds: Int, title: String, subTitle: String, msg: String)
+public class func sendLocalAlert(delaySeconds: Int, title: String, subTitle: String, msg: String)
 {
  let center = UNUserNotificationCenter.current()   
  center.requestAuthorization(options: [.alert, .sound])  // axe the request should have already been done in your project 

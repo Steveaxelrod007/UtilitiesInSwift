@@ -1,6 +1,5 @@
 // axee.com by Steve Axelrod
 
-import UIKit
 import Foundation
 
 // axe, I mainly created these so as Swift morphs, I can easily adjust the function bodies and not all over the code base

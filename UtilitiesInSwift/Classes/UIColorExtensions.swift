@@ -1,5 +1,7 @@
 // axee.com by Steve Axelrod
 
+import Foundation
+
 extension UIColor
 {
 public convenience init(red: Int, green: Int, blue: Int, alpha: CGFloat?=1.0)
