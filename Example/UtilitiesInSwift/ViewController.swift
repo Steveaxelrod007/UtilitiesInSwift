@@ -13,6 +13,15 @@ import UtilitiesInSwift
 class ViewController: UIViewController 
 {
 var cc = CancelableClosure()       // axe maintain the var
+var autoComplete:AutoFillTextField?
+
+@IBOutlet weak var textF: UITextField!
+
+
+@IBAction func textFieldChanged() 
+{
+ print("here0")
+}
 
 
 func tests()
@@ -67,6 +76,7 @@ func tests()
 override func viewDidLoad() 
 {
  super.viewDidLoad()
+ autoComplete = AutoFillTextField(triggers: "@", textF: textF)
 }
 
 

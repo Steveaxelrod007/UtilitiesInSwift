@@ -4,7 +4,7 @@ import Foundation
 
 // axe, I mainly created these so as Swift morphs, I can easily adjust the function bodies and not all over the code base
 
-public class Queues  // axe cause it's funny
+public class Queues
 {
 
 public class func dispatchMainQueueAsync(closure:@escaping ()->())
