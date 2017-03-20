@@ -124,7 +124,7 @@ private func checkCancelable()
  
  let cancel = CancelableClosure()
  cancel.closure =
-   { [weak self] in
+   {
    callBack()
    }
  
@@ -167,7 +167,7 @@ private func checkCancelable()
 
 private func startTableLookup()
 {
- guard let textF  = textF  else { return }
+ guard let _  = textF  else { return }
  guard let view   = view   else { return }
  guard let tableV = tableV else { return }
 
@@ -188,7 +188,7 @@ public func tableView(_ tableView: UITableView, numberOfRowsInSection section: I
 
 public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell 
 {
- let cell = tableView.dequeueReusableCell(withIdentifier: "axeCell", for: indexPath) as! UITableViewCell
+ let cell = tableView.dequeueReusableCell(withIdentifier: "axeCell", for: indexPath)
          
  cell.imageView?.image     = nil  // axe initialize cell
  cell.backgroundColor      = self.backColor
