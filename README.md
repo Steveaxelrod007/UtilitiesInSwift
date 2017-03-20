@@ -69,8 +69,29 @@ Int Extension --> convert Int to String distance, format Ints with commas, conve
      intVal.fullNotation() --> 5,280,000
      intVal.kmNotation()   --> 5.28m
  
- 
+AutoFillTextField --> if trigger char is matched while typing in textfield a popup selection list is displayed.  A nice way to select an item from a table.
+     
+     var autoComplete:AutoFillTextField?
 
+     
+     let listOfNames = [
+                       AutoFillTextFieldData(name: <This is displayed and returned>, imageUrl: <link to image if availble>),
+                       ]
+   
+     autoComplete = AutoFillTextField(triggers: "@+*", textF: textF, view: view, list: listOfNames, backColor: UIColor.brown, textColor: UIColor.red)
+ 
+     AutoFillTextField
+       (
+       triggers: <characters that activate the table view popup>, 
+       textF: UITextField,                                              // axe weak referenced 
+       view: <the view the textfield is in>,                            // axe weak referenced 
+       list: <AutoFillTextFieldData array of items to display>,
+       tableView: <optional or pass in your own table that I use>, 
+       backColor: <optional background color of table>, 
+       textColor: <optional color of text>
+       ) 
+
+     
   
 
 

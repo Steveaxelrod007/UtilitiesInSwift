@@ -24,7 +24,7 @@ The utilities are broken down by type categories (I did what I thought was ok).
   * CancelableClosure --> I use it for waiting for 0.5 seconds to elapse on key strokes, then call some lookup function 
   * UIColor Extension --> great way to save a color value as an Int then pull from database and easily convert back to UIColor
   * Int Extension     --> convert Int to String distance display in feet/miles, 123456 to 123,456,  123456 to 123.5k (thousands), 123456789 to 123.46m (million)
-                     
+  * AutoFillTextField --> if trigger char is matched while typing in textfield a popup selection list is displayed                   
 
                        DESC
 
