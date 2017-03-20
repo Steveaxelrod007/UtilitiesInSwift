@@ -78,7 +78,9 @@ AutoFillTextField --> if trigger char is matched while typing in textfield a pop
                        AutoFillTextFieldData(name: <This is displayed and returned>, imageUrl: <link to image if availble>),
                        ]
    
-     autoComplete = AutoFillTextField(triggers: "@+*", textF: textF, view: view, list: listOfNames, backColor: UIColor.brown, textColor: UIColor.red)
+     autoComplete = AutoFillTextField(triggers: "@+", textF: textF, view: view, list: listOfNames, backColor: UIColor.brown, textColor: UIColor.red, callBack:
+       {
+       })
  
      AutoFillTextField
        (
@@ -88,11 +90,12 @@ AutoFillTextField --> if trigger char is matched while typing in textfield a pop
        list: <AutoFillTextFieldData array of items to display>,
        tableView: <optional or pass in your own table that I use>, 
        backColor: <optional background color of table>, 
-       textColor: <optional color of text>
+       textColor: <optional color of text>,
+       callBack: <optional method you can have called in between keystrokes to load more data matching text of textfield> 
        ) 
 
      
-  
+     autoComplete.updateList(list: <new list of names>)  // axe update displayed list on the fly or from callback                    
 
 
 ## Requirements

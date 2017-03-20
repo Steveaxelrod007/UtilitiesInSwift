@@ -96,6 +96,7 @@ public func updateList(list: [AutoFillTextFieldData])
  Queues.dispatchMainQueueAsync 
    { [weak self] in
    self?.setupLists(list: list)
+   self?.filteredList.removeAll()
    self?.filteredList.append(contentsOf: self?.list ?? [])
    self?.tableV?.reloadData()
    }
