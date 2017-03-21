@@ -4,16 +4,17 @@ import Foundation
 import UIKit
 
 
-public struct AutoFillTextFieldData
+public struct AutoFillTextFieldData   // axe this can be expanded as needed for more items to display in table
 {
 var name = ""
 var imageUrl = ""
-
+var image: UIImage?
  
-public init(name: String, imageUrl: String)
+public init(name: String, imageUrl: String, image:UIImage? = nil)
 {
- self.name = name
+ self.name     = name
  self.imageUrl = imageUrl
+ self.image    = image 
 }
  
 }
@@ -26,19 +27,22 @@ weak var view: UIView?
 
 var tableV: UITableView?
 
-var list = [AutoFillTextFieldData]()
-var filteredList = [AutoFillTextFieldData]() 
+var list         = [AutoFillTextFieldData]()  // axe initial list to display
+var filteredList = [AutoFillTextFieldData]()  // axe actual list to display based on 'list', gets set when table is displayed and modified as user types
+var imageList    = [AutoFillTextFieldData]()  // axe cache of already loaded images
 
 var triggers   = ""
+var indexOfTrigger = 0
 
 var inLookupMode = false
 
-var indexOfTrigger = 0
 var backColor: UIColor?
 var textColor: UIColor?
 
-var callBack: (() -> Void)?
+var callBack: (() -> Void)?         // axe a nice way for a server call to be made after key strokes, 0.5 seconds delay and resets
 var cancelC = CancelableClosure()
+
+var cellTagID = 0  // axe used for loading correct image when in background 
 
 
 public init(triggers: String, textF: UITextField, view: UIView, list: [AutoFillTextFieldData], tableView: UITableView? = nil, backColor: UIColor? = nil, textColor: UIColor? = nil, callBack: (() -> Void)? = nil)
@@ -69,12 +73,6 @@ public init(triggers: String, textF: UITextField, view: UIView, list: [AutoFillT
  tableV?.tableFooterView = UIView() // axe hides blank rows
 
  setupLists(list: list)       
- self.list.removeAll()
- self.list.append(contentsOf: list)
- self.list.sort 
-   { (f1, f2) -> Bool in
-   f1.name < f2.name
-   }
    
  textF.addTarget(self, action: #selector(textChanged), for: UIControlEvents.editingChanged)
 }
@@ -90,10 +88,10 @@ private func setupLists(list: [AutoFillTextFieldData])
    }
 }
 
-
+// axe after the callback and new data is loaded from a server call???, this lets us update the displayed list
 public func updateList(list: [AutoFillTextFieldData])
 {
- Queues.dispatchMainQueueAsync 
+ Queues.dispatchMainQueueAsync    // axe we have to make sure this is on main Q so table does not get corrupted
    { [weak self] in
    self?.setupLists(list: list)
    self?.filteredList.removeAll()
@@ -105,15 +103,14 @@ public func updateList(list: [AutoFillTextFieldData])
 
 private func trigger() -> Bool
 {
-// print(">\(textF?.text ?? "")<")
- if let chr = textF?.text?.characters.last
+ if let chr = textF?.text?.characters.last  // axe triggers are checked on each keystroke entered and must be preceded by a space or be first in textfield
     {
     if triggers.contains(String(chr))
        {
        if textF?.text?.characters.count == 1 { return true }
 
        guard let txt = textF?.text else { return false }
-       if txt.substring(from:txt.index(txt.endIndex, offsetBy: -2)) == " \(chr)" { return true }
+       if txt.substring(from:txt.index(txt.endIndex, offsetBy: -2)) == " \(chr)" { return true }  // since it's past 1st pos make sure it has a space before it
        }
     }  
     
@@ -121,7 +118,7 @@ private func trigger() -> Bool
 }
 
 
-private func checkCancelable()
+private func checkCancelable()   // axe I truly love this guy
 {
  guard let callBack = callBack else { return }
 
@@ -144,20 +141,23 @@ private func checkCancelable()
 {
  checkCancelable()   
  
-// print("\(Date().timeIntervalSince1970)  >\(textF?.text ?? "")< inlook --> \(inLookupMode)    index --> \(indexOfTrigger)   trigger --> \(trigger())")
- if trigger() { lookupOff() } 
-// print("\(Date().timeIntervalSince1970)  >\(textF?.text ?? "")< inlook --> \(inLookupMode)    index --> \(indexOfTrigger)   trigger --> \(trigger())")
+ if trigger() { lookupOff() }  // axe if another trigger presents then shut off previous trigger so a new oone can be initiated 
  
- if inLookupMode
+ if inLookupMode    // axe table is displayed
     {
-    if indexOfTrigger < (textF?.text?.characters.count ?? 0)
+    guard let txt = textF?.text else 
+      {
+      lookupOff() 
+      return 
+      }
+      
+    if indexOfTrigger < txt.characters.count  // axe make sure they do not back over trigger
        {
-       guard let txt = textF?.text else { return }
        let subS = txt.substring(from:txt.index(txt.endIndex, offsetBy: -(txt.characters.count - indexOfTrigger - 1))) // axe remove trigger char
 
-       filteredList = list.filter({ (item) -> Bool in return item.name.hasPrefix(subS) })
+       filteredList = list.filter({ (item) -> Bool in return item.name.hasPrefix(subS) })  // axe match what they typed
 
-       tableV?.isHidden = filteredList.count < 1                        
+       tableV?.isHidden = filteredList.count < 1  // axe no matches                       
        tableV?.reloadData()
        }
     else
@@ -165,7 +165,6 @@ private func checkCancelable()
        lookupOff()
        }   
     }   
-
 
  if trigger() && inLookupMode == false
     {
@@ -185,7 +184,10 @@ private func startTableLookup()
  view.addSubview(tableV)
  
  filteredList.append(contentsOf: list)
+ 
  tableV.reloadData()
+ tableV.scrollsToTop = true
+ tableV.setContentOffset(CGPoint.zero, animated: false)
  
  inLookupMode = true
 }
@@ -197,6 +199,15 @@ public func tableView(_ tableView: UITableView, numberOfRowsInSection section: I
 }
 
 
+private func checkCache(url: URL) -> Int?
+{
+ return imageList.index(where: 
+          { (item) -> Bool in
+          return item.imageUrl == url.absoluteString
+          })
+}
+
+
 public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell 
 {
  let cell = tableView.dequeueReusableCell(withIdentifier: "axeCell", for: indexPath)
@@ -204,27 +215,39 @@ public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPat
  cell.imageView?.image     = nil  // axe initialize cell
  cell.backgroundColor      = self.backColor
  cell.textLabel?.textColor = self.textColor
+ cell.tag = cellTagID
+ cellTagID += 1
 
  cell.textLabel?.text = filteredList[indexPath.row].name
 
  if filteredList[indexPath.row].imageUrl.characters.count > 0, let url = URL(string: filteredList[indexPath.row].imageUrl)
     {
-    let cel = cell
-    cel.imageView?.image = UIImage(named: "placeholder")  // axe place holder image
-    Queues.dispatchBackgroundQueueASync 
-      {
-      if let data = try? Data(contentsOf: url) 
-         {
-         if let image = UIImage(data: data)
+    if let index = checkCache(url: url)
+       {
+       cell.imageView?.image = imageList[index].image
+       }
+    else   
+       {
+       cell.imageView?.image = UIImage(named: "placeholder")  // axe place holder image
+       Queues.dispatchBackgroundQueueASync 
+         { [weak self] in
+         let tagID = cell.tag
+
+         if let data = try? Data(contentsOf: url) 
             {
-            Queues.dispatchMainQueueAsync
-              { 
-              cel.imageView?.image = image
-              }
+            if let image = UIImage(data: data)
+               {
+               self?.imageList.append(AutoFillTextFieldData(name: "", imageUrl: url.absoluteString, image: image))
+
+               Queues.dispatchMainQueueAsync
+                 {  
+                 if cell.tag == tagID { cell.imageView?.image = image } // axe prevents writing on a resused cell
+                 }
+               }
             }
          }
-      }
-    }    
+       } 
+    }     
         
  return cell
 }
@@ -260,6 +283,8 @@ public func close()
  textF?.removeTarget(self, action: #selector(textChanged), for: UIControlEvents.editingChanged)
  textF  = nil
  view   = nil    
+ list.removeAll()
+ imageList.removeAll()
 }
 
 
