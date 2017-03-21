@@ -4,7 +4,7 @@ import Foundation
 import UIKit
 
 
-public class AutoFillTextFieldData
+public struct AutoFillTextFieldData
 {
 var name = ""
 var imageUrl = ""
@@ -105,11 +105,15 @@ public func updateList(list: [AutoFillTextFieldData])
 
 private func trigger() -> Bool
 {
+// print(">\(textF?.text ?? "")<")
  if let chr = textF?.text?.characters.last
     {
-    if triggers.contains(String(chr)) && (textF?.text?.contains(" \(chr)") == true || textF?.text?.characters.count == 1)
+    if triggers.contains(String(chr))
        {
-       return true
+       if textF?.text?.characters.count == 1 { return true }
+
+       guard let txt = textF?.text else { return false }
+       if txt.substring(from:txt.index(txt.endIndex, offsetBy: -2)) == " \(chr)" { return true }
        }
     }  
     
@@ -140,6 +144,10 @@ private func checkCancelable()
 {
  checkCancelable()   
  
+// print("\(Date().timeIntervalSince1970)  >\(textF?.text ?? "")< inlook --> \(inLookupMode)    index --> \(indexOfTrigger)   trigger --> \(trigger())")
+ if trigger() { lookupOff() } 
+// print("\(Date().timeIntervalSince1970)  >\(textF?.text ?? "")< inlook --> \(inLookupMode)    index --> \(indexOfTrigger)   trigger --> \(trigger())")
+ 
  if inLookupMode
     {
     if indexOfTrigger < (textF?.text?.characters.count ?? 0)
@@ -157,8 +165,9 @@ private func checkCancelable()
        lookupOff()
        }   
     }   
- else
- if trigger()
+
+
+ if trigger() && inLookupMode == false
     {
     if let text = textF?.text { indexOfTrigger = text.characters.count - 1 }
     startTableLookup()
@@ -168,9 +177,10 @@ private func checkCancelable()
 
 private func startTableLookup()
 {
- guard let _  = textF  else { return }
  guard let view   = view   else { return }
  guard let tableV = tableV else { return }
+ 
+ tableV.isHidden = false
 
  view.addSubview(tableV)
  
