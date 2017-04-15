@@ -7,6 +7,15 @@ import Foundation
 public class Queues
 {
 
+public class func dispatchBackgroundQueueASyncConcurrent(closure:@escaping ()->())
+{
+ DispatchQueue(label: "com.axee.concurrentQ", attributes: .concurrent).async
+   {
+   closure()
+   } 
+}
+
+
 public class func dispatchMainQueueAsync(closure:@escaping ()->())
 {
  DispatchQueue.main.async 

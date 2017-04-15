@@ -16,7 +16,7 @@ let oneToNineteen = ["", "one", "two", "three", "four", "five", "six",   // axe 
 
 let tens = ["", "", "twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety"]
             
-let defaultString = "Zero Dollars and 00/100"
+let defaultString = "****Zero Dollars and 00/100****"
 var retCents   = " and 0/100"
 var retDollars = ""
 
@@ -38,8 +38,8 @@ var retDollars = ""
 
  guard var dollarAmount = Int(dollars) else { return defaultString }
  
- if dollarAmount < 1  { return "zero dollars" + retCents }
- if dollarAmount == 1 { return "one dollar"   + retCents }
+ if dollarAmount < 1  { return "****zero dollars" + retCents + "****" }
+ if dollarAmount == 1 { return "****one dollar"   + retCents + "****"}
  
  while dollarAmount > 0
    {
@@ -96,7 +96,7 @@ var retDollars = ""
       }
    }
  
- let combined = retDollars + retCents
+ let combined = "****" + retDollars + retCents + "****"
   
  return combined.replacingOccurrences(of: "  ", with: " ")
 }

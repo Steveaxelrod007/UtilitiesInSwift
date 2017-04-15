@@ -27,7 +27,15 @@ func tests()
 {
  SendLocalAlert.sendLocalAlert(delaySeconds: 10, title: "Test", subTitle: "Test", msg: "Test")
  
- let num = "123,456.78"
+ var num = "123,456.78"
+ print("Origial number --> \(num)   \(NumberToWords.convert(amount: num))")
+ num = "0"
+ print("Origial number --> \(num)   \(NumberToWords.convert(amount: num))")
+ num = "1"
+ print("Origial number --> \(num)   \(NumberToWords.convert(amount: num))")
+ num = "2"
+ print("Origial number --> \(num)   \(NumberToWords.convert(amount: num))")
+ num = "1.23"
  print("Origial number --> \(num)   \(NumberToWords.convert(amount: num))")
 
  
