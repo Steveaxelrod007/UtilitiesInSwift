@@ -35,7 +35,7 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="BgB-4U-D5S"/>
                                 </connections>
                             </textField>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rd2-ZW-klN" customClass="UIViewDesignable">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rd2-ZW-klN" customClass="UIViewDesignable" customModule="UtilitiesInSwift">
                                 <rect key="frame" x="37" y="78" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

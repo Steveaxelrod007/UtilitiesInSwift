@@ -12,7 +12,7 @@ PODS:
     - Nimble
     - Quick
   - Quick (1.0.0)
-  - UtilitiesInSwift (1.0.10)
+  - UtilitiesInSwift (1.0.11)
 
 DEPENDENCIES:
   - FBSnapshotTestCase
@@ -30,7 +30,7 @@ SPEC CHECKSUMS:
   Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
   Nimble-Snapshots: e743439f26c2fa99d8f7e0d7c01c99bcb40aa6f2
   Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
-  UtilitiesInSwift: 4185751f69e6da70db1b1752af14943db6a9d76c
+  UtilitiesInSwift: c55a41e34d29e70a9e81dcd883d9608e5f5539d3
 
 PODFILE CHECKSUM: dce301a9e3658f6d313902496560a58caa8b01d2
 
