@@ -49,7 +49,7 @@ func tests()
  print("Available device space --> \(FileSystem.availableDeviceSpace())")
 
  
- print("Phone is in use --> \(Phone.onPhone())")        
+// print("Phone is in use --> \(Phone.onPhone())")        
 
        
  cc.cancelled = true

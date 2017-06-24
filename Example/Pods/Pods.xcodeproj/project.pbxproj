@@ -54,7 +54,7 @@
 		50B80F12A9BAE302F07F6CF94752F462 /* mach_excServer.c in Sources */ = {isa = PBXBuildFile; fileRef = 493EBDDF596CFF92A51589B4299D6048 /* mach_excServer.c */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		54E420020AFE589D61F17525C4A1374D /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43F5D818152EC8734F94D83F6CB632A /* Filter.swift */; };
 		551440A0F92574039C1D2EB39227D6B8 /* AsyncMatcherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F32B8DCF598ED9E3BDF343E4C8A91 /* AsyncMatcherWrapper.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		552CB8755C43A87F7036D4FEFD115640 /* UIViewDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0939423262E085DBAD598F16620039A /* UIViewDesignable.swift */; };
+		552CB8755C43A87F7036D4FEFD115640 /* UIDesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0939423262E085DBAD598F16620039A /* UIDesignableView.swift */; };
 		57B9EF6BE2F0518A23812367351C2F02 /* URL+FileName.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1906C2EEC74D3F756324E96F610273D /* URL+FileName.swift */; };
 		599669823A2EED2928C77F301F6B0515 /* BeNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CF70DA6913C74B478980A07C7D4C14 /* BeNil.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		59CBAA337BA3C4E8288000C92E0CF87B /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D02170066D185295E46A653E89416C /* UIColorExtensions.swift */; };
@@ -351,7 +351,7 @@
 		AD81E3B1B8900A13D8DCEFC7FBC89C51 /* BeIdenticalTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeIdenticalTo.swift; path = Sources/Nimble/Matchers/BeIdenticalTo.swift; sourceTree = "<group>"; };
 		AE95FD22040B2F419CA820D80377A6FA /* Callsite.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Callsite.swift; path = Sources/Quick/Callsite.swift; sourceTree = "<group>"; };
 		AF56BECC3FEF842A4B13280D5BC5FE11 /* Closures.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Closures.swift; path = Sources/Quick/Hooks/Closures.swift; sourceTree = "<group>"; };
-		B0939423262E085DBAD598F16620039A /* UIViewDesignable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIViewDesignable.swift; sourceTree = "<group>"; };
+		B0939423262E085DBAD598F16620039A /* UIDesignableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIDesignableView.swift; sourceTree = "<group>"; };
 		B0BDDFCA6435FEF025A8AA771C018452 /* UIApplication+StrictKeyWindow.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIApplication+StrictKeyWindow.h"; path = "FBSnapshotTestCase/Categories/UIApplication+StrictKeyWindow.h"; sourceTree = "<group>"; };
 		B0E67650E7214DCE853B31771FB5FEF5 /* AssertionRecorder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssertionRecorder.swift; path = Sources/Nimble/Adapters/AssertionRecorder.swift; sourceTree = "<group>"; };
 		B116FA869C5D013D31DB1BADB4530528 /* Pods-UtilitiesInSwift_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-UtilitiesInSwift_Example-umbrella.h"; sourceTree = "<group>"; };
@@ -661,7 +661,7 @@
 				98D02170066D185295E46A653E89416C /* UIColorExtensions.swift */,
 				AABC2C011EF9B47300D42A32 /* UIDesignableButton.swift */,
 				AABC2C021EF9B47300D42A32 /* UIDesignableLabel.swift */,
-				B0939423262E085DBAD598F16620039A /* UIViewDesignable.swift */,
+				B0939423262E085DBAD598F16620039A /* UIDesignableView.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1197,7 +1197,7 @@
 				C303DFA2F81F7D9F7F03CC3D6B797B56 /* Queues.swift in Sources */,
 				6F1BC4E55FE519B09DB37DE954F4A136 /* SendLocalAlert.swift in Sources */,
 				59CBAA337BA3C4E8288000C92E0CF87B /* UIColorExtensions.swift in Sources */,
-				552CB8755C43A87F7036D4FEFD115640 /* UIViewDesignable.swift in Sources */,
+				552CB8755C43A87F7036D4FEFD115640 /* UIDesignableView.swift in Sources */,
 				3FD065F32D4E0571B8B7D804F58B63EA /* UtilitiesInSwift-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

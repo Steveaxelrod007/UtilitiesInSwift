@@ -3,7 +3,7 @@
 import UIKit
 import Foundation
 
-@IBDesignable class UIViewDesignable: UIView
+@IBDesignable class UIDesignableView: UIView
 {
 
 @IBInspectable var borderWidth: CGFloat = 0.0
@@ -22,6 +22,16 @@ import Foundation
  layer.borderColor = borderColor.cgColor
  }
 }
+
+
+@IBInspectable var radius: CGFloat = 0.0
+{
+ didSet
+ {
+ layer.cornerRadius = radius
+ layer.masksToBounds = true
+ }
+} 
 
 
 override func prepareForInterfaceBuilder() 
