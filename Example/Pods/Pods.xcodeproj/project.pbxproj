@@ -109,6 +109,8 @@
 		A4F69F3477A935285620AC3031C5C848 /* FBSnapshotTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE187BBD2A0FA098D99DDBE8C0ACAC91 /* FBSnapshotTestController.m */; };
 		A663D272465010B712A743672BF78D0A /* World.h in Headers */ = {isa = PBXBuildFile; fileRef = 9963EE7CC8E08B315A80570158907487 /* World.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A91166D0A5E8F1D5D5377622C381C045 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D50F32074CE8DCF1783E1B0AD0D182A /* Match.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
+		AA018A8B1F20EDEE005CB645 /* UIDesignableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA018A8A1F20EDEE005CB645 /* UIDesignableImageView.swift */; };
+		AA2789461F02010E0089388B /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2789451F02010E0089388B /* UIViewControllerExtension.swift */; };
 		AABC2C031EF9B47300D42A32 /* UIDesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABC2C011EF9B47300D42A32 /* UIDesignableButton.swift */; };
 		AABC2C041EF9B47300D42A32 /* UIDesignableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABC2C021EF9B47300D42A32 /* UIDesignableLabel.swift */; };
 		AB255C27EF10E742C6567775022F49D5 /* BeginWith.swift in Sources */ = {isa = PBXBuildFile; fileRef = F199A02F676DA73375C88A80FB16DD4D /* BeginWith.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -344,6 +346,8 @@
 		A66FAAF71E7CF4B8EF0D7FEB82094C90 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8B3330E9A86A20013F3ABF42BC342A2 /* QuickSelectedTestSuiteBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickSelectedTestSuiteBuilder.swift; path = Sources/Quick/QuickSelectedTestSuiteBuilder.swift; sourceTree = "<group>"; };
 		A8B368409FE89D4D75FB9369398B388A /* Nimble-Snapshots.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Nimble-Snapshots.xcconfig"; sourceTree = "<group>"; };
+		AA018A8A1F20EDEE005CB645 /* UIDesignableImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDesignableImageView.swift; sourceTree = "<group>"; };
+		AA2789451F02010E0089388B /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		AABC2C011EF9B47300D42A32 /* UIDesignableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDesignableButton.swift; sourceTree = "<group>"; };
 		AABC2C021EF9B47300D42A32 /* UIDesignableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDesignableLabel.swift; sourceTree = "<group>"; };
 		ABA451463938AAC29772A9BA4A644712 /* UIImage+Compare.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Compare.m"; path = "FBSnapshotTestCase/Categories/UIImage+Compare.m"; sourceTree = "<group>"; };
@@ -662,6 +666,8 @@
 				AABC2C011EF9B47300D42A32 /* UIDesignableButton.swift */,
 				AABC2C021EF9B47300D42A32 /* UIDesignableLabel.swift */,
 				B0939423262E085DBAD598F16620039A /* UIDesignableView.swift */,
+				AA2789451F02010E0089388B /* UIViewControllerExtension.swift */,
+				AA018A8A1F20EDEE005CB645 /* UIDesignableImageView.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1256,6 +1262,8 @@
 				094973D2D2F1E3B2E772F93C8147C6B9 /* UIApplication+StrictKeyWindow.m in Sources */,
 				AABC2C041EF9B47300D42A32 /* UIDesignableLabel.swift in Sources */,
 				69DA8B003216466C60F029CBD79897F1 /* UIImage+Compare.m in Sources */,
+				AA018A8B1F20EDEE005CB645 /* UIDesignableImageView.swift in Sources */,
+				AA2789461F02010E0089388B /* UIViewControllerExtension.swift in Sources */,
 				AABC2C031EF9B47300D42A32 /* UIDesignableButton.swift in Sources */,
 				35DD05FD595A6FE7F5A0692D12E319DC /* UIImage+Diff.m in Sources */,
 				756564ABAF2892FE7140C92A1CDDCF65 /* UIImage+Snapshot.m in Sources */,
