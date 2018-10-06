@@ -2,13 +2,25 @@ use_frameworks!
 
 target 'UtilitiesInSwift_Example' do
   pod 'UtilitiesInSwift', :path => '../'
-
+  
   target 'UtilitiesInSwift_Tests' do
     inherit! :search_paths
-
-  pod 'Quick', '~> 1.0.0'
-  pod 'Nimble', '~> 5.1.1'
-  pod 'FBSnapshotTestCase'
-  pod 'Nimble-Snapshots'
+    
+    pod 'Quick'
+    pod 'Nimble'
+    pod 'FBSnapshotTestCase'
+    pod 'Nimble-Snapshots'
   end
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    if target.name == 'Nimble-Snapshots'
+      target.build_configurations.each do |config|
+        config.build_settings['SWIFT_VERSION'] = '4.0'
+      end
+    end
+  end
+  
+  
 end

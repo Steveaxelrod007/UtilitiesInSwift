@@ -46,7 +46,7 @@ import Foundation
 override func drawText(in rect: CGRect) 
 {
  let insets = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
- super.drawText(in: UIEdgeInsetsInsetRect(rect, insets))
+ super.drawText(in: rect.inset(by: insets))
 }
 
 
