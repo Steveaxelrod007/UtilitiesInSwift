@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'UtilitiesInSwift'
-  s.version          = '1.3'
+  s.version          = '1.4'
   s.summary          = 'Utility functions for swift'
 
 
@@ -35,7 +35,7 @@ The utilities are broken down by type categories (I did what I thought was ok).
   s.source           = { :git => 'https://github.com/steveaxelrod007/UtilitiesInSwift.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '12.0'
 
   s.source_files = 'UtilitiesInSwift/Classes/**/*'
   

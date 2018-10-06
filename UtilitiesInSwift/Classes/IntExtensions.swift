@@ -12,14 +12,12 @@ public func kmNotation() -> String
     {
     let str = "\(String(format: "%.1f", (Float(self) / 1000)))"
     
-    if str == "1000.0" { return "1m" }  // axe special case, convert to m format
-    
-    return str.contains(".0") ? str.substring(to: str.index(str.endIndex, offsetBy: -2)) + "k" : str + "k" 
+    return str.contains(".0") ? str.prefix(upTo: str.index(str.endIndex, offsetBy: -2)) + "k" : str + "k" 
     } 
  else
     {
     let str = "\(String(format: "%.2f", (Float(self) / 1000000)))" 
-    return str.contains(".00") ? str.substring(to: str.index(str.endIndex, offsetBy: -3)) + "m" : str + "m" 
+    return str.contains(".00") ? str.prefix(upTo: str.index(str.endIndex, offsetBy: -3)) + "m" : str + "m" 
     }
 }
   

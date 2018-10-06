@@ -63,7 +63,7 @@ public init(triggers: String, textF: UITextField, view: UIView, list: [AutoFillT
  else
     {
     tableV = UITableView()
-    tableV?.frame = CGRect(x: 0, y: 40, width: view.frame.width, height: view.frame.height - textF.frame.origin.y - textF.frame.size.height - 40)
+    tableV?.frame = CGRect(x: 0, y: 60, width: view.frame.width, height: view.frame.height - 100)
     if let backColor = backColor { tableV?.backgroundColor = backColor }
     }
 
@@ -74,7 +74,7 @@ public init(triggers: String, textF: UITextField, view: UIView, list: [AutoFillT
 
  setupLists(list: list)       
    
- textF.addTarget(self, action: #selector(textChanged), for: UIControlEvents.editingChanged)
+ textF.addTarget(self, action: #selector(AutoFillTextField.textChanged), for: UIControlEvents.editingChanged)
 }
 
 
@@ -103,16 +103,9 @@ public func updateList(list: [AutoFillTextFieldData])
 
 private func trigger() -> Bool
 {
- if let chr = textF?.text?.characters.last  // axe triggers are checked on each keystroke entered and must be preceded by a space or be first in textfield
-    {
-    if triggers.contains(String(chr))
-       {
-       if textF?.text?.characters.count == 1 { return true }
+ guard let txt = textF?.text, let chr = txt.last, triggers.contains(String(chr)) else { return false }   // axe triggers are checked on each keystroke entered and must be preceded by a space or be first in textfield
 
-       guard let txt = textF?.text else { return false }
-       if txt.substring(from:txt.index(txt.endIndex, offsetBy: -2)) == " \(chr)" { return true }  // since it's past 1st pos make sure it has a space before it
-       }
-    }  
+ if txt.count == 1 || String(txt.suffix(2)) == " \(chr)" { return true }  // since it's past 1st pos make sure it has a space before it
     
  return false    
 }
@@ -139,38 +132,43 @@ private func checkCancelable()   // axe I truly love this guy
 
 @objc private func textChanged()
 {
- checkCancelable()   
+ Queues.dispatchMainQueueAsync
+   { [weak self] in
+   guard let `self` = self else { return }
+   self.checkCancelable()   
  
- if trigger() { lookupOff() }  // axe if another trigger presents then shut off previous trigger so a new oone can be initiated 
+   if self.trigger() { self.lookupOff() }  // axe if another trigger presents then shut off previous trigger so a new one can be initiated 
  
- if inLookupMode    // axe table is displayed
-    {
-    guard let txt = textF?.text else 
+   if self.inLookupMode    // axe table is displayed
       {
-      lookupOff() 
-      return 
-      }
+      guard let txt = self.textF?.text else 
+        {
+        self.lookupOff() 
+        return 
+        }
       
-    if indexOfTrigger < txt.characters.count  // axe make sure they do not back over trigger
-       {
-       let subS = txt.substring(from:txt.index(txt.endIndex, offsetBy: -(txt.characters.count - indexOfTrigger - 1))) // axe remove trigger char
+      if self.indexOfTrigger < txt.count  // axe make sure they do not back over trigger
+         {
+         let subS = txt.suffix(txt.count - self.indexOfTrigger - 1)
+         print(">\(subS)<")
 
-       filteredList = list.filter({ (item) -> Bool in return item.name.hasPrefix(subS) })  // axe match what they typed
+         self.filteredList = self.list.filter({ (item) -> Bool in return item.name.hasPrefix(subS) })  // axe match what they typed
+ 
+         self.tableV?.isHidden = self.filteredList.count < 1  // axe no matches                       
+         self.tableV?.reloadData()
+         }
+      else
+         {
+         self.lookupOff()
+         }   
+      }   
 
-       tableV?.isHidden = filteredList.count < 1  // axe no matches                       
-       tableV?.reloadData()
-       }
-    else
-       {
-       lookupOff()
-       }   
-    }   
-
- if trigger() && inLookupMode == false
-    {
-    if let text = textF?.text { indexOfTrigger = text.characters.count - 1 }
-    startTableLookup()
-    }  
+   if self.trigger() && self.inLookupMode == false
+      {
+      if let text = self.textF?.text { self.indexOfTrigger = text.count - 1 }
+      self.startTableLookup()
+      }
+   }     
 }
 
 
@@ -184,7 +182,7 @@ private func startTableLookup()
  view.addSubview(tableV)
  
  filteredList.append(contentsOf: list)
- 
+
  tableV.reloadData()
  tableV.scrollsToTop = true
  tableV.setContentOffset(CGPoint.zero, animated: false)
@@ -220,7 +218,7 @@ public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPat
 
  cell.textLabel?.text = filteredList[indexPath.row].name
 
- if filteredList[indexPath.row].imageUrl.characters.count > 0, let url = URL(string: filteredList[indexPath.row].imageUrl)
+ if filteredList[indexPath.row].imageUrl.count > 0, let url = URL(string: filteredList[indexPath.row].imageUrl)
     {
     if let index = checkCache(url: url)
        {
@@ -229,18 +227,17 @@ public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPat
     else   
        {
        cell.imageView?.image = UIImage(named: "placeholder")  // axe place holder image
+       let tagID = cell.tag
+       
        Queues.dispatchBackgroundQueueASync 
          { [weak self] in
-         let tagID = cell.tag
-
          if let data = try? Data(contentsOf: url) 
             {
             if let image = UIImage(data: data)
                {
-               self?.imageList.append(AutoFillTextFieldData(name: "", imageUrl: url.absoluteString, image: image))
-
                Queues.dispatchMainQueueAsync
-                 {  
+                 { [weak self] in  
+                 self?.imageList.append(AutoFillTextFieldData(name: "", imageUrl: url.absoluteString, image: image))
                  if cell.tag == tagID { cell.imageView?.image = image } // axe prevents writing on a resused cell
                  }
                }
@@ -257,7 +254,7 @@ public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexP
 {
  if let textF = textF, let txt = textF.text 
     {
-    textF.text = txt + filteredList[indexPath.row].name + " "
+    textF.text = txt.prefix(self.indexOfTrigger+1) + filteredList[indexPath.row].name + " "
     }
 
  lookupOff()
@@ -280,7 +277,7 @@ public func close()
 {
  lookupOff()
  
- textF?.removeTarget(self, action: #selector(textChanged), for: UIControlEvents.editingChanged)
+ textF?.removeTarget(self, action: #selector(AutoFillTextField.textChanged), for: UIControlEvents.editingChanged)
  textF  = nil
  view   = nil    
  list.removeAll()
