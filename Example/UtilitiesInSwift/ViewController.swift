@@ -25,8 +25,6 @@ var autoComplete:AutoFillTextField?
 
 func tests()
 {
- SendLocalAlert.sendLocalAlert(delaySeconds: 10, title: "Test", subTitle: "Test", msg: "Test")
- 
  var num = "123,456.78"
  print("Origial number --> \(num)   \(NumberToWords.convert(amount: num))")
  num = "0"
