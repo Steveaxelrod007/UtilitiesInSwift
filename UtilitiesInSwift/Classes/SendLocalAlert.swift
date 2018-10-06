@@ -21,7 +21,7 @@ public class func sendLocalAlert(delaySeconds: Int, title: String, subTitle: Str
       content.title    = title
       content.subtitle = subTitle
       content.body     = msg 
-      content.sound    = UNNotificationSound.default
+//      content.sound    = UNNotificationSound.default
      
       let trigger  = UNTimeIntervalNotificationTrigger.init(timeInterval: TimeInterval(delaySeconds > 0 ? delaySeconds : 1), repeats: false)
       let uniqueID = ProcessInfo.processInfo.globallyUniqueString.replacingOccurrences(of: "-", with: "")
