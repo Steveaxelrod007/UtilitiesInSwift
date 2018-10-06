@@ -74,7 +74,7 @@ public init(triggers: String, textF: UITextField, view: UIView, list: [AutoFillT
 
  setupLists(list: list)       
    
- textF.addTarget(self, action: #selector(AutoFillTextField.textChanged), for: UIControlEvents.editingChanged)
+ textF.addTarget(self, action: #selector(AutoFillTextField.textChanged), for: UIControl.Event.editingChanged)
 }
 
 
@@ -276,7 +276,7 @@ public func close()
 {
  lookupOff()
  
- textF?.removeTarget(self, action: #selector(AutoFillTextField.textChanged), for: UIControlEvents.editingChanged)
+ textF?.removeTarget(self, action: #selector(AutoFillTextField.textChanged), for: UIControl.Event.editingChanged)
  textF  = nil
  view   = nil    
  list.removeAll()
