@@ -23,10 +23,6 @@ NumbersToWords --> Converts a number String "$1,234.56" to "one thousand two hun
       
      amount can be 0.01 ... 999,999.99  nine hundred ninety nine thousand nine hundred ninety nine dollars and 99/100
 
-SendLocalAlert --> A simple way to send and stop local alerts              
-
-Phone --> See if device is currently on a phone call
-
 FileSystem --> clear out temp files, determine available space on device             
 
 CancelableClosure --> I use it for waiting for 0.5 seconds to elapse on key strokes, then call some lookup function

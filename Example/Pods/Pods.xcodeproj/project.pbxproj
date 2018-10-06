@@ -322,7 +322,9 @@
 				LastUpgradeCheck = 1000;
 				TargetAttributes = {
 					A9C6FF74BC529879A6F039C5639AA882 = {
+						DevelopmentTeam = PQR4AZH34U;
 						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -560,13 +562,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8D1B33337DCA776969374C6BA901D2AC /* UtilitiesInSwift.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = PQR4AZH34U;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -580,6 +584,7 @@
 				MODULEMAP_FILE = "Target Support Files/UtilitiesInSwift/UtilitiesInSwift.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = UtilitiesInSwift;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
@@ -635,13 +640,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8D1B33337DCA776969374C6BA901D2AC /* UtilitiesInSwift.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = PQR4AZH34U;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -655,6 +662,7 @@
 				MODULEMAP_FILE = "Target Support Files/UtilitiesInSwift/UtilitiesInSwift.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = UtilitiesInSwift;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
