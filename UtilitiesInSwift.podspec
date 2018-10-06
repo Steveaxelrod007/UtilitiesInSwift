@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'UtilitiesInSwift'
-  s.version          = '1.4'
+  s.version          = '1.4.1'
   s.summary          = 'Utility functions for swift'
 
 
