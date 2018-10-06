@@ -74,7 +74,7 @@ public init(triggers: String, textF: UITextField, view: UIView, list: [AutoFillT
 
  setupLists(list: list)       
    
- textF.addTarget(self, action: #selector(textChanged), for: UIControlEvents.editingChanged)
+ textF.addTarget(self, action: #selector(textChanged), for: UIControl.Event.editingChanged)
 }
 
 
@@ -103,14 +103,14 @@ public func updateList(list: [AutoFillTextFieldData])
 
 private func trigger() -> Bool
 {
- if let chr = textF?.text?.characters.last  // axe triggers are checked on each keystroke entered and must be preceded by a space or be first in textfield
+ if let chr = textF?.text?.last  // axe triggers are checked on each keystroke entered and must be preceded by a space or be first in textfield
     {
     if triggers.contains(String(chr))
        {
-       if textF?.text?.characters.count == 1 { return true }
+       if textF?.text?.count == 1 { return true }
 
-       guard let txt = textF?.text else { return false }
-       if txt.substring(from:txt.index(txt.endIndex, offsetBy: -2)) == " \(chr)" { return true }  // since it's past 1st pos make sure it has a space before it
+       guard let txt = textF?.text else { return false }        
+       if String(txt[txt.index(txt.endIndex, offsetBy: -2)...]) == " \(chr)" { return true }  // since it's past 1st pos make sure it has a space before it
        }
     }  
     
@@ -151,10 +151,9 @@ private func checkCancelable()   // axe I truly love this guy
       return 
       }
       
-    if indexOfTrigger < txt.characters.count  // axe make sure they do not back over trigger
+    if indexOfTrigger < txt.count  // axe make sure they do not back over trigger
        {
-       let subS = txt.substring(from:txt.index(txt.endIndex, offsetBy: -(txt.characters.count - indexOfTrigger - 1))) // axe remove trigger char
-
+       let subS = String(txt[txt.index(txt.endIndex, offsetBy: -(txt.count - indexOfTrigger - 1))...]) // axe remove trigger char
        filteredList = list.filter({ (item) -> Bool in return item.name.hasPrefix(subS) })  // axe match what they typed
 
        tableV?.isHidden = filteredList.count < 1  // axe no matches                       
@@ -168,7 +167,7 @@ private func checkCancelable()   // axe I truly love this guy
 
  if trigger() && inLookupMode == false
     {
-    if let text = textF?.text { indexOfTrigger = text.characters.count - 1 }
+    if let text = textF?.text { indexOfTrigger = text.count - 1 }
     startTableLookup()
     }  
 }
@@ -220,7 +219,7 @@ public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPat
 
  cell.textLabel?.text = filteredList[indexPath.row].name
 
- if filteredList[indexPath.row].imageUrl.characters.count > 0, let url = URL(string: filteredList[indexPath.row].imageUrl)
+ if filteredList[indexPath.row].imageUrl.count > 0, let url = URL(string: filteredList[indexPath.row].imageUrl)
     {
     if let index = checkCache(url: url)
        {
@@ -280,7 +279,7 @@ public func close()
 {
  lookupOff()
  
- textF?.removeTarget(self, action: #selector(textChanged), for: UIControlEvents.editingChanged)
+ textF?.removeTarget(self, action: #selector(textChanged), for: UIControl.Event.editingChanged)
  textF  = nil
  view   = nil    
  list.removeAll()

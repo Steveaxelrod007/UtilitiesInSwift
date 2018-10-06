@@ -28,9 +28,9 @@ var retDollars = ""
  values.removeFirst()   // axe see if there are any pennies to display
  if var cents = values.first
     {
-    while cents.characters.count > 2 
+    while cents.count > 2 
        { 
-       cents.characters = cents.characters.dropLast() 
+       cents = String(cents.dropLast())
        }
        
     retCents = " and " + cents + "/100"    
