@@ -150,7 +150,6 @@ private func checkCancelable()   // axe I truly love this guy
       if self.indexOfTrigger < txt.count  // axe make sure they do not back over trigger
          {
          let subS = txt.suffix(txt.count - self.indexOfTrigger - 1)
-         print(">\(subS)<")
 
          self.filteredList = self.list.filter({ (item) -> Bool in return item.name.hasPrefix(subS) })  // axe match what they typed
  
