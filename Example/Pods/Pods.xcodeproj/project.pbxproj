@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1307AEADB1297C16250F5C58747635D4 /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A3199ACC6CE23C49079A943D3C9563 /* FileSystem.swift */; };
 		3E4BFABF6430B3961222E5512A87AA73 /* Queues.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B3D326328AEE38EC0857A636C56373 /* Queues.swift */; };
-		422178D0018F4581CEA55A2596BC1553 /* SendLocalAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4203ACC977F6950FDD00F90025C22DEB /* SendLocalAlert.swift */; };
 		432F6AD68F58B2B546451B00A5B1AE76 /* CancelableClosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB70ECD0D900E22D035F10C71D8411C2 /* CancelableClosure.swift */; };
 		5FE054C0EE7F6A077A9BFAEC862C9289 /* Pods-UtilitiesInSwift_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A6065421E324789934E36B725498AA62 /* Pods-UtilitiesInSwift_Tests-dummy.m */; };
 		6BF992D2669798277A6E0AC285221E30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
@@ -44,7 +43,6 @@
 		298099B6CEAEDD2AB0DDB08DD600ED77 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E4F4FDB0AF05CAACDC825DD515B7B8A /* Pods_UtilitiesInSwift_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UtilitiesInSwift_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EC2DBAC793CC79C98A1E671997FB656 /* Pods-UtilitiesInSwift_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-UtilitiesInSwift_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		4203ACC977F6950FDD00F90025C22DEB /* SendLocalAlert.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SendLocalAlert.swift; path = UtilitiesInSwift/Classes/SendLocalAlert.swift; sourceTree = "<group>"; };
 		43EA5B2732DDABAB919EA0DB504AD4EE /* Pods-UtilitiesInSwift_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-UtilitiesInSwift_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		441D019ED997891D564B68D32AD91683 /* Pods-UtilitiesInSwift_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-UtilitiesInSwift_Tests-resources.sh"; sourceTree = "<group>"; };
 		47FD269D0C6771E9EDE258FB2CAA949E /* UtilitiesInSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UtilitiesInSwift-umbrella.h"; sourceTree = "<group>"; };
@@ -136,7 +134,6 @@
 				F13DAE2D0C28D0DBD317527BF981C0F0 /* NumberToWords.swift */,
 				EAAF14FA3BD80A80B94B395DE6E20447 /* Phone.swift */,
 				D4B3D326328AEE38EC0857A636C56373 /* Queues.swift */,
-				4203ACC977F6950FDD00F90025C22DEB /* SendLocalAlert.swift */,
 				6D4D7F441320AE6189DDA05CA9CE171A /* UIColorExtensions.swift */,
 				A8F1BF7E0BF724197958BDC9A859CFA9 /* Support Files */,
 			);
@@ -359,7 +356,6 @@
 				E7B3EAD938BB624FC58203995FCEA19E /* NumberToWords.swift in Sources */,
 				734160B3179B3E839EEE6063CF9C04CA /* Phone.swift in Sources */,
 				3E4BFABF6430B3961222E5512A87AA73 /* Queues.swift in Sources */,
-				422178D0018F4581CEA55A2596BC1553 /* SendLocalAlert.swift in Sources */,
 				DE4A7E2ED5A81D86C99626B758353D84 /* UIColorExtensions.swift in Sources */,
 				EAEE4231C003C475A80DFF574EFF06E7 /* UtilitiesInSwift-dummy.m in Sources */,
 			);
