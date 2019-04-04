@@ -198,7 +198,7 @@ public func tableView(_ tableView: UITableView, numberOfRowsInSection section: I
 
 private func checkCache(url: URL) -> Int?
 {
- return imageList.index(where: 
+ return imageList.firstIndex(where: 
           { (item) -> Bool in
           return item.imageUrl == url.absoluteString
           })
